@@ -171,6 +171,7 @@
     <file name="ob_exclude_002.phpt" role="test" />
     <file name="ob_exclude_003.phpt" role="test" />
     <file name="ob_exclude_004.phpt" role="test" />
+    <file name="ob_exclude_005.phpt" role="test" />
     <file name="ob_skipif.inc" role="test" />
     <file name="streaming.zst" role="test" />
     <file name="streams_1.phpt" role="test" />

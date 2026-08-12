@@ -1,5 +1,5 @@
 --TEST--
-built-in output compression exclude list: exact match (no ini set)
+built-in output compression exclude list: wildcard match (no ini set)
 --SKIPIF--
 <?php
 include (dirname(__FILE__) . '/ob_skipif.inc');
@@ -9,10 +9,10 @@ zstd.output_compression=1
 --ENV--
 HTTP_ACCEPT_ENCODING=zstd
 --GET--
-ob=020
+ob=024
 --FILE--
 <?php
-header('Content-Type: application/pdf');
+header('Content-Type: audio/mpeg');
 echo "hi\n";
 ?>
 --EXPECT--
