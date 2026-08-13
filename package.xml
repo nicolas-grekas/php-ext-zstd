@@ -10,10 +10,10 @@
   <email>kjdev@php.net</email>
   <active>yes</active>
  </lead>
- <date>2026-07-02</date>
+ <date>2026-08-13</date>
  <version>
-  <release>0.17.0</release>
-  <api>0.17.0</api>
+  <release>0.18.0</release>
+  <api>0.18.0</api>
  </version>
  <stability>
   <release>stable</release>
@@ -21,9 +21,8 @@
  </stability>
  <license>MIT</license>
  <notes>
-- add: MIME type exclusion for output compression (zstd.output_compression_exclude_types)
-- add: explicit --enable-apcu / --disable-apcu config.m4 options
-- fix: in-tree builds with apcu
+- add: built-in list of uncompressible MIME types for transparent output compression
+- add: negation tokens (!) in zstd.output_compression_exclude_types to compress a MIME type even though it is in the built-in list
  </notes>
  <contents>
   <dir name="/">
