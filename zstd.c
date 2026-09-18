@@ -878,8 +878,13 @@ static int php_zstd_comp_flush_or_end(php_zstd_stream_data *self, int end)
             ret = EOF;
             break;
         }
-        php_stream_write(self->stream,
-                         self->ctx.output.dst, self->ctx.output.pos);
+        if (self->ctx.output.pos
+            && (size_t) php_stream_write(self->stream, self->ctx.output.dst,
+                                         self->ctx.output.pos)
+               != self->ctx.output.pos) {
+            ret = EOF;
+            break;
+        }
     } while (res > 0);
 
     return ret;
@@ -1004,8 +1009,14 @@ php_zstd_comp_write(php_stream *stream, const char *buf, size_t count)
             return -1;
 #endif
         }
-        php_stream_write(self->stream,
-                         self->ctx.output.dst, self->ctx.output.pos);
+        if (self->ctx.output.pos
+            && (size_t) php_stream_write(self->stream, self->ctx.output.dst,
+                                         self->ctx.output.pos)
+               != self->ctx.output.pos) {
+#if PHP_VERSION_ID >= 70400
+            return -1;
+#endif
+        }
 
     } while (res > 0);
 
